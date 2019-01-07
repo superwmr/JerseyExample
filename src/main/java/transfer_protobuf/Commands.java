@@ -3899,6 +3899,34 @@ public final class Commands {
      */
     com.google.protobuf.ByteString
         getAmountBytes();
+
+    /**
+     * <code>required string job_id = 5;</code>
+     */
+    boolean hasJobId();
+    /**
+     * <code>required string job_id = 5;</code>
+     */
+    java.lang.String getJobId();
+    /**
+     * <code>required string job_id = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getJobIdBytes();
+
+    /**
+     * <code>required string order_id = 6;</code>
+     */
+    boolean hasOrderId();
+    /**
+     * <code>required string order_id = 6;</code>
+     */
+    java.lang.String getOrderId();
+    /**
+     * <code>required string order_id = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getOrderIdBytes();
   }
   /**
    * Protobuf type {@code transfer_protobuf.TransferData}
@@ -3912,6 +3940,8 @@ public final class Commands {
       payeeAccount_ = "";
       payeeName_ = "";
       amount_ = "";
+      jobId_ = "";
+      orderId_ = "";
     }
     private int bitField0_;
     public static final int BANK_FIELD_NUMBER = 1;
@@ -4119,6 +4149,108 @@ public final class Commands {
       amount_ = value.toStringUtf8();
     }
 
+    public static final int JOB_ID_FIELD_NUMBER = 5;
+    private java.lang.String jobId_;
+    /**
+     * <code>required string job_id = 5;</code>
+     */
+    public boolean hasJobId() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required string job_id = 5;</code>
+     */
+    public java.lang.String getJobId() {
+      return jobId_;
+    }
+    /**
+     * <code>required string job_id = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getJobIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(jobId_);
+    }
+    /**
+     * <code>required string job_id = 5;</code>
+     */
+    private void setJobId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+      jobId_ = value;
+    }
+    /**
+     * <code>required string job_id = 5;</code>
+     */
+    private void clearJobId() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      jobId_ = getDefaultInstance().getJobId();
+    }
+    /**
+     * <code>required string job_id = 5;</code>
+     */
+    private void setJobIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+      jobId_ = value.toStringUtf8();
+    }
+
+    public static final int ORDER_ID_FIELD_NUMBER = 6;
+    private java.lang.String orderId_;
+    /**
+     * <code>required string order_id = 6;</code>
+     */
+    public boolean hasOrderId() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required string order_id = 6;</code>
+     */
+    public java.lang.String getOrderId() {
+      return orderId_;
+    }
+    /**
+     * <code>required string order_id = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOrderIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(orderId_);
+    }
+    /**
+     * <code>required string order_id = 6;</code>
+     */
+    private void setOrderId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+      orderId_ = value;
+    }
+    /**
+     * <code>required string order_id = 6;</code>
+     */
+    private void clearOrderId() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      orderId_ = getDefaultInstance().getOrderId();
+    }
+    /**
+     * <code>required string order_id = 6;</code>
+     */
+    private void setOrderIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+      orderId_ = value.toStringUtf8();
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4132,6 +4264,12 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeString(4, getAmount());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeString(5, getJobId());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeString(6, getOrderId());
       }
       unknownFields.writeTo(output);
     }
@@ -4156,6 +4294,14 @@ public final class Commands {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(4, getAmount());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(5, getJobId());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(6, getOrderId());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -4427,6 +4573,98 @@ public final class Commands {
         return this;
       }
 
+      /**
+       * <code>required string job_id = 5;</code>
+       */
+      public boolean hasJobId() {
+        return instance.hasJobId();
+      }
+      /**
+       * <code>required string job_id = 5;</code>
+       */
+      public java.lang.String getJobId() {
+        return instance.getJobId();
+      }
+      /**
+       * <code>required string job_id = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getJobIdBytes() {
+        return instance.getJobIdBytes();
+      }
+      /**
+       * <code>required string job_id = 5;</code>
+       */
+      public Builder setJobId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setJobId(value);
+        return this;
+      }
+      /**
+       * <code>required string job_id = 5;</code>
+       */
+      public Builder clearJobId() {
+        copyOnWrite();
+        instance.clearJobId();
+        return this;
+      }
+      /**
+       * <code>required string job_id = 5;</code>
+       */
+      public Builder setJobIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setJobIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>required string order_id = 6;</code>
+       */
+      public boolean hasOrderId() {
+        return instance.hasOrderId();
+      }
+      /**
+       * <code>required string order_id = 6;</code>
+       */
+      public java.lang.String getOrderId() {
+        return instance.getOrderId();
+      }
+      /**
+       * <code>required string order_id = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOrderIdBytes() {
+        return instance.getOrderIdBytes();
+      }
+      /**
+       * <code>required string order_id = 6;</code>
+       */
+      public Builder setOrderId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setOrderId(value);
+        return this;
+      }
+      /**
+       * <code>required string order_id = 6;</code>
+       */
+      public Builder clearOrderId() {
+        copyOnWrite();
+        instance.clearOrderId();
+        return this;
+      }
+      /**
+       * <code>required string order_id = 6;</code>
+       */
+      public Builder setOrderIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setOrderIdBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:transfer_protobuf.TransferData)
     }
     private byte memoizedIsInitialized = -1;
@@ -4467,6 +4705,18 @@ public final class Commands {
             }
             return null;
           }
+          if (!hasJobId()) {
+            if (shouldMemoize) {
+              memoizedIsInitialized = 0;
+            }
+            return null;
+          }
+          if (!hasOrderId()) {
+            if (shouldMemoize) {
+              memoizedIsInitialized = 0;
+            }
+            return null;
+          }
           if (shouldMemoize) memoizedIsInitialized = 1;
           return DEFAULT_INSTANCE;
 
@@ -4490,6 +4740,12 @@ public final class Commands {
           amount_ = visitor.visitString(
               hasAmount(), amount_,
               other.hasAmount(), other.amount_);
+          jobId_ = visitor.visitString(
+              hasJobId(), jobId_,
+              other.hasJobId(), other.jobId_);
+          orderId_ = visitor.visitString(
+              hasOrderId(), orderId_,
+              other.hasOrderId(), other.orderId_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -4544,6 +4800,18 @@ public final class Commands {
                   String s = input.readString();
                   bitField0_ |= 0x00000008;
                   amount_ = s;
+                  break;
+                }
+                case 42: {
+                  String s = input.readString();
+                  bitField0_ |= 0x00000010;
+                  jobId_ = s;
+                  break;
+                }
+                case 50: {
+                  String s = input.readString();
+                  bitField0_ |= 0x00000020;
+                  orderId_ = s;
                   break;
                 }
               }

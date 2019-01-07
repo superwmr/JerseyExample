@@ -6,7 +6,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import socket_service.SocketServer;
 
-@ApplicationPath("")
+@ApplicationPath("helloRestful")
 public class MyApplication extends ResourceConfig {
 	//
 	public MyApplication() {

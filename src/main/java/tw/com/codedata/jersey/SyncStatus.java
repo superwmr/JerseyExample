@@ -11,7 +11,6 @@ public class SyncStatus
     @PUT  
     public Response getName()
     {
-    	System.out.println("sync_status");
         String result = "{\"code\": \"200\",\"message\": \"statusOK\", \"success\": true}";
         return Response.status(200).entity(result).build();
     }

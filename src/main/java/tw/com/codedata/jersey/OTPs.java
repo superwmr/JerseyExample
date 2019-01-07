@@ -11,12 +11,10 @@ public class OTPs {
 
 	@GET
 	public Response getName() {
-		System.out.println("otps");
 		String trueSms = new String(sms);
 		sms = "";
 		return Response.status(200)
 				.entity("{\"code\": \"200\",\"message\": \"xxx\", \"success\": true, \"result\": \"" + trueSms + "\" }")
 				.build();
-//		return "{\"code\": \"200\",\"message\": \"xxx\", \"success\": true, \"result\": \"" + trueSms + "\" }";
 	}
 }
