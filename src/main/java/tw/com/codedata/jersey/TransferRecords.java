@@ -6,11 +6,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 @Path("/transfer_records")
-public class TransferRecord
+public class TransferRecords
 {
     @POST  
-    @Path("/{param}")  
-    public Response getName(@PathParam("param") String name)
+//    @Path("/{param}")
+//    public Response getName(@PathParam("param") String name)
+    public Response getName()
     {
     	System.out.println("transfer_records");
         String result = "{\"code\": \"200\",\"message\": \"statusOK\", \"success\": true}";

@@ -24,9 +24,9 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
         StringBuilder sb = new StringBuilder();
         sb.append("User: ").append(requestContext.getSecurityContext().getUserPrincipal() == null ? "unknown"
                         : requestContext.getSecurityContext().getUserPrincipal());
-        sb.append(" - Path: ").append(requestContext.getUriInfo().getPath());
-        sb.append(" - Header: ").append(requestContext.getHeaders());
-        sb.append(" - Entity: ").append(getEntityBody(requestContext));
+        sb.append("\n - Path: ").append(requestContext.getUriInfo().getPath());
+        sb.append("\n - Header: ").append(requestContext.getHeaders());
+        sb.append("\n - Body: ").append(getEntityBody(requestContext));
         System.out.println("HTTP REQUEST : " + sb.toString());
     }
  
