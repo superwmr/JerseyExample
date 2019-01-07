@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 public class SyncStatus
 {
     @PUT  
-    public Response getName()
+    public Response getResponse()
     {
         String result = "{\"code\": \"200\",\"message\": \"statusOK\", \"success\": true}";
         return Response.status(200).entity(result).build();

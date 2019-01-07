@@ -39,16 +39,12 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 
 		MultivaluedMap<String, String> map = requestContext.getUriInfo().getQueryParameters();
 		List<String> keys = new ArrayList(map.keySet());
-//		List<String> values = new ArrayList(map.values());
-//		System.out.println("requestContext = " + requestContext.getUriInfo().getQueryParameters());
-		System.out.println("keys = " + keys);
-//		System.out.println("values = " + values);
-		String strResult = "";
+		List<String> strResult = new ArrayList();
 		for (int i = 0; i < keys.size(); i++) {
-			strResult = keys.get(i) + "=" + map.getFirst(keys.get(i));
+			strResult.add(keys.get(i) + "=" + map.getFirst(keys.get(i)));
 		}
 
-		return strResult;
+		return strResult.toString();
 	}
 
 	private String getEntityBody(ContainerRequestContext requestContext) {

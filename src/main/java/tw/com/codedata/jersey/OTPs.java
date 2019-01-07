@@ -10,7 +10,7 @@ public class OTPs {
 	public static String sms = "";
 
 	@GET
-	public Response getName() {
+	public Response getResponse() {
 		String trueSms = new String(sms);
 		sms = "";
 		return Response.status(200)

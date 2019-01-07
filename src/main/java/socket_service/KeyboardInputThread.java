@@ -64,6 +64,8 @@ public class KeyboardInputThread extends Thread {
 				String targetBankcode = split(msg, 8);
 				String targetAccount = split(msg, 9);
 				String targetName = split(msg, 10);
+				String orderID = split(msg, 11);
+				String jobID = split(msg, 12);
 				//
 
 				Commands.Command.Builder cmdInstance = Commands.Command.newBuilder();
@@ -73,10 +75,10 @@ public class KeyboardInputThread extends Thread {
 				cmdInstance.setResponse(Response.OK);
 
 				if (cmd.equals("" + Type.REGISTER_VALUE)) {// 1
-					System.out.println("Type.REGISTER_VALUE");
+					System.out.println("REGISTER_VALUE");
 					cmdInstance.setType(Type.REGISTER);
 				} else if (cmd.equals("" + Type.TRANSFER_VALUE)) {// 2
-					System.out.println("Type.TRANSFER_VALUE");
+					System.out.println("TRANSFER_VALUE");
 					cmdInstance.setType(Type.TRANSFER);
 					//
 					TransferData.Builder transferData = TransferData.newBuilder();
@@ -94,11 +96,13 @@ public class KeyboardInputThread extends Thread {
 					transferData.setBank(targetBank);
 					transferData.setPayeeAccount(targetAccount);
 					transferData.setPayeeName(targetName);
+					transferData.setOrderId(orderID);
+					transferData.setJobId(jobID);
 					//
 					transferData.setBank(bank);
 					cmdInstance.setTransferData(transferData);
 				} else if (cmd.equals("" + Type.SYNC_BALANCE_VALUE)) {// 3
-					System.out.println("Type.SYNC_BALANCE_VALUE");
+					System.out.println("SYNC_BALANCE_VALUE");
 					cmdInstance.setType(Type.SYNC_BALANCE);
 					//
 					SyncBalanceData.Builder syncBalanceData = SyncBalanceData.newBuilder();
