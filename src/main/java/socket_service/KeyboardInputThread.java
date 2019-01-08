@@ -67,7 +67,6 @@ public class KeyboardInputThread extends Thread {
 				String orderID = split(msg, 11);
 				String jobID = split(msg, 12);
 				//
-
 				Commands.Command.Builder cmdInstance = Commands.Command.newBuilder();
 				Commands.Device.Builder device = Commands.Device.newBuilder();
 				device.setId("" + System.currentTimeMillis());
@@ -121,6 +120,7 @@ public class KeyboardInputThread extends Thread {
 				Command cmdBuild = cmdInstance.build();
 				byte[] cmdBuildArray = cmdBuild.toByteArray();
 				int cmdLen = cmdBuildArray.length;
+				System.out.println("cmdLen = " + cmdLen);
 				//
 				ByteBuffer len = ByteBuffer.allocate(4);
 				len.putInt(cmdLen);
@@ -138,12 +138,8 @@ public class KeyboardInputThread extends Thread {
 	}
 
 	private int getLen(DataInputStream in) throws Exception {
-		byte[] bytes = new byte[4];
-		in.readFully(bytes);
-		return byteToInt(bytes);
-	}
-
-	private int byteToInt(byte[] b) {
-		return (((int) b[0]) << 24) + (((int) b[1]) << 16) + (((int) b[2]) << 8) + b[3];
+		ByteBuffer bytes = ByteBuffer.allocate(4);
+		in.readFully(bytes.array());
+		return bytes.getInt();
 	}
 }

@@ -76,5 +76,6 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		sb.append("Header: ").append(responseContext.getHeaders());
 		sb.append(" - Entity: ").append(responseContext.getEntity());
 		System.out.println("HTTP RESPONSE : " + sb.toString());
+		System.out.println("========================================");
 	}
 }

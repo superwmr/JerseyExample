@@ -5,6 +5,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.nio.ByteBuffer;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import transfer_protobuf.Commands;
@@ -64,7 +65,8 @@ public class DataStreamThread extends Thread implements IKeyboardInput {
 
 					byte[] lenBytes = new byte[4];
 					in.readFully(lenBytes);
-					int len = byteToInt(lenBytes);
+					int len = ByteBuffer.wrap(lenBytes).getInt();
+					System.out.println("len = " + len);
 					//
 					byte[] dataBytes = new byte[len];
 					in.readFully(dataBytes);
@@ -76,10 +78,6 @@ public class DataStreamThread extends Thread implements IKeyboardInput {
 			}
 		}
 	});
-
-	private int byteToInt(byte[] b) {
-		return (((int) b[0]) << 24) + (((int) b[1]) << 16) + (((int) b[2]) << 8) + b[3];
-	}
 
 	public void onInput(byte[] input) {
 		try {
