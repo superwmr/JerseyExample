@@ -3927,6 +3927,20 @@ public final class Commands {
      */
     com.google.protobuf.ByteString
         getOrderIdBytes();
+
+    /**
+     * <code>required string payee_bank_code = 7;</code>
+     */
+    boolean hasPayeeBankCode();
+    /**
+     * <code>required string payee_bank_code = 7;</code>
+     */
+    java.lang.String getPayeeBankCode();
+    /**
+     * <code>required string payee_bank_code = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getPayeeBankCodeBytes();
   }
   /**
    * Protobuf type {@code transfer_protobuf.TransferData}
@@ -3942,6 +3956,7 @@ public final class Commands {
       amount_ = "";
       jobId_ = "";
       orderId_ = "";
+      payeeBankCode_ = "";
     }
     private int bitField0_;
     public static final int BANK_FIELD_NUMBER = 1;
@@ -4251,6 +4266,57 @@ public final class Commands {
       orderId_ = value.toStringUtf8();
     }
 
+    public static final int PAYEE_BANK_CODE_FIELD_NUMBER = 7;
+    private java.lang.String payeeBankCode_;
+    /**
+     * <code>required string payee_bank_code = 7;</code>
+     */
+    public boolean hasPayeeBankCode() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required string payee_bank_code = 7;</code>
+     */
+    public java.lang.String getPayeeBankCode() {
+      return payeeBankCode_;
+    }
+    /**
+     * <code>required string payee_bank_code = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPayeeBankCodeBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(payeeBankCode_);
+    }
+    /**
+     * <code>required string payee_bank_code = 7;</code>
+     */
+    private void setPayeeBankCode(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+      payeeBankCode_ = value;
+    }
+    /**
+     * <code>required string payee_bank_code = 7;</code>
+     */
+    private void clearPayeeBankCode() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      payeeBankCode_ = getDefaultInstance().getPayeeBankCode();
+    }
+    /**
+     * <code>required string payee_bank_code = 7;</code>
+     */
+    private void setPayeeBankCodeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+      payeeBankCode_ = value.toStringUtf8();
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4270,6 +4336,9 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeString(6, getOrderId());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeString(7, getPayeeBankCode());
       }
       unknownFields.writeTo(output);
     }
@@ -4302,6 +4371,10 @@ public final class Commands {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(6, getOrderId());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(7, getPayeeBankCode());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -4665,6 +4738,52 @@ public final class Commands {
         return this;
       }
 
+      /**
+       * <code>required string payee_bank_code = 7;</code>
+       */
+      public boolean hasPayeeBankCode() {
+        return instance.hasPayeeBankCode();
+      }
+      /**
+       * <code>required string payee_bank_code = 7;</code>
+       */
+      public java.lang.String getPayeeBankCode() {
+        return instance.getPayeeBankCode();
+      }
+      /**
+       * <code>required string payee_bank_code = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPayeeBankCodeBytes() {
+        return instance.getPayeeBankCodeBytes();
+      }
+      /**
+       * <code>required string payee_bank_code = 7;</code>
+       */
+      public Builder setPayeeBankCode(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPayeeBankCode(value);
+        return this;
+      }
+      /**
+       * <code>required string payee_bank_code = 7;</code>
+       */
+      public Builder clearPayeeBankCode() {
+        copyOnWrite();
+        instance.clearPayeeBankCode();
+        return this;
+      }
+      /**
+       * <code>required string payee_bank_code = 7;</code>
+       */
+      public Builder setPayeeBankCodeBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPayeeBankCodeBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:transfer_protobuf.TransferData)
     }
     private byte memoizedIsInitialized = -1;
@@ -4717,6 +4836,12 @@ public final class Commands {
             }
             return null;
           }
+          if (!hasPayeeBankCode()) {
+            if (shouldMemoize) {
+              memoizedIsInitialized = 0;
+            }
+            return null;
+          }
           if (shouldMemoize) memoizedIsInitialized = 1;
           return DEFAULT_INSTANCE;
 
@@ -4746,6 +4871,9 @@ public final class Commands {
           orderId_ = visitor.visitString(
               hasOrderId(), orderId_,
               other.hasOrderId(), other.orderId_);
+          payeeBankCode_ = visitor.visitString(
+              hasPayeeBankCode(), payeeBankCode_,
+              other.hasPayeeBankCode(), other.payeeBankCode_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -4814,6 +4942,12 @@ public final class Commands {
                   orderId_ = s;
                   break;
                 }
+                case 58: {
+                  String s = input.readString();
+                  bitField0_ |= 0x00000040;
+                  payeeBankCode_ = s;
+                  break;
+                }
               }
             }
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4872,6 +5006,15 @@ public final class Commands {
      * <code>required .transfer_protobuf.Bank bank = 1;</code>
      */
     transfer_protobuf.Commands.Bank getBank();
+
+    /**
+     * <code>optional float balance = 2;</code>
+     */
+    boolean hasBalance();
+    /**
+     * <code>optional float balance = 2;</code>
+     */
+    float getBalance();
   }
   /**
    * Protobuf type {@code transfer_protobuf.SyncBalanceData}
@@ -4936,10 +5079,42 @@ public final class Commands {
       bitField0_ = (bitField0_ & ~0x00000001);
     }
 
+    public static final int BALANCE_FIELD_NUMBER = 2;
+    private float balance_;
+    /**
+     * <code>optional float balance = 2;</code>
+     */
+    public boolean hasBalance() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional float balance = 2;</code>
+     */
+    public float getBalance() {
+      return balance_;
+    }
+    /**
+     * <code>optional float balance = 2;</code>
+     */
+    private void setBalance(float value) {
+      bitField0_ |= 0x00000002;
+      balance_ = value;
+    }
+    /**
+     * <code>optional float balance = 2;</code>
+     */
+    private void clearBalance() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      balance_ = 0F;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(1, getBank());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(2, balance_);
       }
       unknownFields.writeTo(output);
     }
@@ -4952,6 +5127,10 @@ public final class Commands {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getBank());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, balance_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -5085,6 +5264,35 @@ public final class Commands {
         return this;
       }
 
+      /**
+       * <code>optional float balance = 2;</code>
+       */
+      public boolean hasBalance() {
+        return instance.hasBalance();
+      }
+      /**
+       * <code>optional float balance = 2;</code>
+       */
+      public float getBalance() {
+        return instance.getBalance();
+      }
+      /**
+       * <code>optional float balance = 2;</code>
+       */
+      public Builder setBalance(float value) {
+        copyOnWrite();
+        instance.setBalance(value);
+        return this;
+      }
+      /**
+       * <code>optional float balance = 2;</code>
+       */
+      public Builder clearBalance() {
+        copyOnWrite();
+        instance.clearBalance();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:transfer_protobuf.SyncBalanceData)
     }
     private byte memoizedIsInitialized = -1;
@@ -5121,6 +5329,9 @@ public final class Commands {
           Visitor visitor = (Visitor) arg0;
           transfer_protobuf.Commands.SyncBalanceData other = (transfer_protobuf.Commands.SyncBalanceData) arg1;
           bank_ = visitor.visitMessage(bank_, other.bank_);
+          balance_ = visitor.visitFloat(
+              hasBalance(), balance_,
+              other.hasBalance(), other.balance_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -5157,6 +5368,11 @@ public final class Commands {
                     bank_ = subBuilder.buildPartial();
                   }
                   bitField0_ |= 0x00000001;
+                  break;
+                }
+                case 21: {
+                  bitField0_ |= 0x00000002;
+                  balance_ = input.readFloat();
                   break;
                 }
               }

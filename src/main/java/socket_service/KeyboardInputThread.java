@@ -89,14 +89,12 @@ public class KeyboardInputThread extends Thread {
 					bank.setPassword(password);
 					bank.setTransPwd(tranPwd);
 					//
-					Bank.Builder targetBank = Bank.newBuilder();
-					targetBank.setCode(targetBankcode);
 					transferData.setAmount(amount);
-					transferData.setBank(targetBank);
 					transferData.setPayeeAccount(targetAccount);
 					transferData.setPayeeName(targetName);
 					transferData.setOrderId(orderID);
 					transferData.setJobId(jobID);
+					transferData.setPayeeBankCode(targetBankcode);
 					//
 					transferData.setBank(bank);
 					cmdInstance.setTransferData(transferData);
@@ -127,6 +125,8 @@ public class KeyboardInputThread extends Thread {
 
 				inputData.onInput(len.array());
 				inputData.onInput(cmdBuildArray);
+				
+				System.out.println("cmdInstance = "+cmdBuild.toString());
 
 				if (isInterrupted())
 					break;
