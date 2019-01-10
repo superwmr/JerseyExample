@@ -459,6 +459,20 @@ public final class Commands {
      */
     com.google.protobuf.ByteString
         getTransPwdBytes();
+
+    /**
+     * <code>optional string id_card = 7;</code>
+     */
+    boolean hasIdCard();
+    /**
+     * <code>optional string id_card = 7;</code>
+     */
+    java.lang.String getIdCard();
+    /**
+     * <code>optional string id_card = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdCardBytes();
   }
   /**
    * Protobuf type {@code transfer_protobuf.Bank}
@@ -475,6 +489,7 @@ public final class Commands {
       password_ = "";
       code_ = "";
       transPwd_ = "";
+      idCard_ = "";
     }
     private int bitField0_;
     public static final int PHONE_FIELD_NUMBER = 1;
@@ -783,6 +798,57 @@ public final class Commands {
       transPwd_ = value.toStringUtf8();
     }
 
+    public static final int ID_CARD_FIELD_NUMBER = 7;
+    private java.lang.String idCard_;
+    /**
+     * <code>optional string id_card = 7;</code>
+     */
+    public boolean hasIdCard() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional string id_card = 7;</code>
+     */
+    public java.lang.String getIdCard() {
+      return idCard_;
+    }
+    /**
+     * <code>optional string id_card = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdCardBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(idCard_);
+    }
+    /**
+     * <code>optional string id_card = 7;</code>
+     */
+    private void setIdCard(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+      idCard_ = value;
+    }
+    /**
+     * <code>optional string id_card = 7;</code>
+     */
+    private void clearIdCard() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      idCard_ = getDefaultInstance().getIdCard();
+    }
+    /**
+     * <code>optional string id_card = 7;</code>
+     */
+    private void setIdCardBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+      idCard_ = value.toStringUtf8();
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -802,6 +868,9 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeString(6, getTransPwd());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeString(7, getIdCard());
       }
       unknownFields.writeTo(output);
     }
@@ -834,6 +903,10 @@ public final class Commands {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(6, getTransPwd());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(7, getIdCard());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -1198,6 +1271,52 @@ public final class Commands {
         return this;
       }
 
+      /**
+       * <code>optional string id_card = 7;</code>
+       */
+      public boolean hasIdCard() {
+        return instance.hasIdCard();
+      }
+      /**
+       * <code>optional string id_card = 7;</code>
+       */
+      public java.lang.String getIdCard() {
+        return instance.getIdCard();
+      }
+      /**
+       * <code>optional string id_card = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdCardBytes() {
+        return instance.getIdCardBytes();
+      }
+      /**
+       * <code>optional string id_card = 7;</code>
+       */
+      public Builder setIdCard(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setIdCard(value);
+        return this;
+      }
+      /**
+       * <code>optional string id_card = 7;</code>
+       */
+      public Builder clearIdCard() {
+        copyOnWrite();
+        instance.clearIdCard();
+        return this;
+      }
+      /**
+       * <code>optional string id_card = 7;</code>
+       */
+      public Builder setIdCardBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setIdCardBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:transfer_protobuf.Bank)
     }
     protected final Object dynamicMethod(
@@ -1237,6 +1356,9 @@ public final class Commands {
           transPwd_ = visitor.visitString(
               hasTransPwd(), transPwd_,
               other.hasTransPwd(), other.transPwd_);
+          idCard_ = visitor.visitString(
+              hasIdCard(), idCard_,
+              other.hasIdCard(), other.idCard_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -1296,6 +1418,12 @@ public final class Commands {
                   String s = input.readString();
                   bitField0_ |= 0x00000020;
                   transPwd_ = s;
+                  break;
+                }
+                case 58: {
+                  String s = input.readString();
+                  bitField0_ |= 0x00000040;
+                  idCard_ = s;
                   break;
                 }
               }
