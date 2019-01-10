@@ -47,25 +47,27 @@ public class KeyboardInputThread extends Thread {
 				if (msg == null || msg.isEmpty())
 					continue;
 
-				String cmd = split(msg, 0);
+				int index = 0;
+				String cmd = split(msg, index++);
 				if (cmd.equals("4")) {
-					OTPs.sms = split(msg, 1);
+					OTPs.sms = split(msg, index++);
 					continue;
 				}
 				//
-				String bankCode = split(msg, 1);
-				String account = split(msg, 2);
-				String phone = split(msg, 3);
-				String name = split(msg, 4);
-				String password = split(msg, 5);
-				String tranPwd = split(msg, 6);
-				String amount = split(msg, 7);
+				String bankCode = split(msg, index++);
+				String account = split(msg, index++);
+				String phone = split(msg, index++);
+				String name = split(msg, index++);
+				String idCard = split(msg, index++);
+				String password = split(msg, index++);
+				String tranPwd = split(msg, index++);
+				String amount = split(msg, index++);
 				//
-				String targetBankcode = split(msg, 8);
-				String targetAccount = split(msg, 9);
-				String targetName = split(msg, 10);
-				String orderID = split(msg, 11);
-				String jobID = split(msg, 12);
+				String targetBankcode = split(msg, index++);
+				String targetAccount = split(msg, index++);
+				String targetName = split(msg, index++);
+				String orderID = split(msg, index++);
+				String jobID = split(msg, index++);
 				//
 				Commands.Command.Builder cmdInstance = Commands.Command.newBuilder();
 				Commands.Device.Builder device = Commands.Device.newBuilder();
@@ -88,6 +90,7 @@ public class KeyboardInputThread extends Thread {
 					bank.setAccount(account);
 					bank.setPassword(password);
 					bank.setTransPwd(tranPwd);
+					bank.setIdCard(idCard);
 					//
 					transferData.setAmount(amount);
 					transferData.setPayeeAccount(targetAccount);
