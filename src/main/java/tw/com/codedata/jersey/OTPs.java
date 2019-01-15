@@ -23,6 +23,7 @@ public class OTPs {
 //		System.out.println("p = " + p + ", b = " + b);
 
 		String sms = callAPIs();
+		System.out.println("sms = " + sms);
 		//
 //		String trueSms = new String(sms);
 //		sms = "";
@@ -32,7 +33,7 @@ public class OTPs {
 	}
 
 	private synchronized String callAPIs() {
-		String output = "";
+		String strResult = "";
 		try {
 			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=%2B8618114899095&b=中信银行");
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -46,8 +47,10 @@ public class OTPs {
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
 //			System.out.println("Output from Server .... \n");
+			String output = "";
 			while ((output = br.readLine()) != null) {
-				System.out.println("output = " + output);			
+				System.out.println("output = " + output);
+				strResult += output;
 			}
 
 			conn.disconnect();
@@ -55,7 +58,7 @@ public class OTPs {
 			e.printStackTrace();
 		}
 
-		return output;
+		return strResult;
 	}
 
 }
