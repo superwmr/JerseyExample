@@ -9,6 +9,7 @@ import java.net.URLConnection;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 @Path("/otps")
@@ -17,12 +18,12 @@ public class OTPs {
 //	public static String sms = "";
 
 	@GET
-	public Response getResponse() {
+	public Response getResponse(@QueryParam("p") String p, @QueryParam("b") String b) {
 
 //    	http://35.194.242.29/api/v1.0/otp?p=%2B8618114899095&b=中信银行
 //		System.out.println("p = " + p + ", b = " + b);
 
-		String sms = callAPIs();
+		String sms = callAPIs(p, b);
 		System.out.println("sms = " + sms);
 		//
 //		String trueSms = new String(sms);
@@ -32,10 +33,12 @@ public class OTPs {
 				.entity(sms).build();
 	}
 
-	private synchronized String callAPIs() {
+	private synchronized String callAPIs(String p, String b) {
 		String strResult = "";
 		try {
-			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=%2B8618114899095&b=中信银行");
+//			p=%2B8618114899095&b=中信银行
+			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=" + p + "&b=" + b);
+//			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=" + p + "&b=" + b);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
