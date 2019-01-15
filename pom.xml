@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tw.com.codedata</groupId>
-	<artifactId>helloRestful</artifactId>
+	<artifactId>JerseyExample</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>helloRestful Maven Webapp</name>
@@ -27,6 +27,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>helloRestful</finalName>
+		<finalName>JerseyExample</finalName>
 	</build>
 </project>
