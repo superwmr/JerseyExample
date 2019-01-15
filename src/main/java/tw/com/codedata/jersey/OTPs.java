@@ -49,7 +49,7 @@ public class OTPs {
 //			System.out.println("Output from Server .... \n");
 			String output = "";
 			while ((output = br.readLine()) != null) {
-				System.out.println("output = " + output);
+//				System.out.println("output = " + output);
 				strResult += output;
 			}
 
