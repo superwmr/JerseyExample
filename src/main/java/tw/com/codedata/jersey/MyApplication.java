@@ -12,10 +12,10 @@ public class MyApplication extends ResourceConfig {
 	public MyApplication() {
 		packages("tw.com.codedata.jersey");
 
-//		(new SocketServer()).start();
+		(new SocketServer()).start();
 
 		Utils.printUserMenu();
 
-//		register(CustomLoggingFilter.class);
+		register(CustomLoggingFilter.class);
 	}
 }

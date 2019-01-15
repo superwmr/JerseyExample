@@ -49,10 +49,10 @@ public class KeyboardInputThread extends Thread {
 
 				int index = 0;
 				String cmd = split(msg, index++);
-				if (cmd.equals("4")) {
-					OTPs.sms = split(msg, index++);
-					continue;
-				}
+//				if (cmd.equals("4")) {
+//					OTPs.sms = split(msg, index++);
+//					continue;
+//				}
 				//
 				String bankCode = split(msg, index++);
 				String account = split(msg, index++);
