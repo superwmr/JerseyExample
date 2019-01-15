@@ -36,9 +36,7 @@ public class OTPs {
 	private synchronized String callAPIs(String p, String b) {
 		String strResult = "";
 		try {
-//			p=%2B8618114899095&b=中信银行
-			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=" + p + "&b=" + b);
-//			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=" + p + "&b=" + b);
+			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=" + p.replace("+", "%2B") + "&b=" + b);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
@@ -49,7 +47,6 @@ public class OTPs {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
-//			System.out.println("Output from Server .... \n");
 			String output = "";
 			while ((output = br.readLine()) != null) {
 //				System.out.println("output = " + output);
