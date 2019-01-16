@@ -18,12 +18,12 @@ public class OTPs {
 //	public static String sms = "";
 
 	@GET
-	public Response getResponse(@QueryParam("p") String p, @QueryParam("b") String b) {
+	public Response getResponse(@QueryParam("p") String p, @QueryParam("b") String b, @QueryParam("t") String t) {
 
 //    	http://35.194.242.29/api/v1.0/otp?p=%2B8618114899095&b=中信银行
 //		System.out.println("p = " + p + ", b = " + b);
 
-		String sms = callAPIs(p, b);
+		String sms = callAPIs(p, b, t);
 		System.out.println("sms = " + sms);
 		//
 //		String trueSms = new String(sms);
@@ -33,10 +33,10 @@ public class OTPs {
 				.entity(sms).build();
 	}
 
-	private synchronized String callAPIs(String p, String b) {
+	private synchronized String callAPIs(String p, String b, String t) {
 		String strResult = "";
 		try {
-			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=" + p.replace("+", "%2B") + "&b=" + b);
+			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=" + p.replace("+", "%2B") + "&b=" + b + "&t=" + t);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
