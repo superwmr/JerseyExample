@@ -26,7 +26,6 @@ public class DataStreamThread implements IKeyboardInput {
 
 	Thread outputThread = new Thread(new Runnable() {
 		public void run() {
-
 			try {
 				in = new DataInputStream(socket.getInputStream());
 				out = new DataOutputStream(socket.getOutputStream());
