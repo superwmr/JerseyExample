@@ -16,14 +16,6 @@ public class TestCase {
 //	static String registerSuccess = "";
 	};
 
-	static {
-		new TestCase();	
-	}
-	
-	public TestCase() {
-		putNextCommand();
-	}
-
 	public static String takeCommand() {
 		try {
 			return queue.take();
