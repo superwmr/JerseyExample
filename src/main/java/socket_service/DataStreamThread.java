@@ -11,7 +11,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import transfer_protobuf.Commands;
 import transfer_protobuf.Commands.Command;
 
-public class DataStreamThread extends Thread implements IKeyboardInput {
+public class DataStreamThread implements IKeyboardInput {
 
 	private DataInputStream in;
 	private DataOutputStream out;
@@ -24,43 +24,43 @@ public class DataStreamThread extends Thread implements IKeyboardInput {
 
 	private LinkedBlockingQueue<byte[]> queue = new LinkedBlockingQueue();
 
-	@Override
-	public void run() {
-		super.run();
+	Thread outputThread = new Thread(new Runnable() {
+		public void run() {
 
-		try {
-			in = new DataInputStream(socket.getInputStream());
-			out = new DataOutputStream(socket.getOutputStream());
-			readRead.start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		// out
-		while (true) {
 			try {
-
-				out.write(queue.take());
-				out.flush();
-				if (isInterrupted())
-					break;
-
+				in = new DataInputStream(socket.getInputStream());
+				out = new DataOutputStream(socket.getOutputStream());
+//				readRead.start();
 			} catch (Exception e) {
 				e.printStackTrace();
-				this.interrupt();
-				break;
 			}
+
+			// out
+			while (true) {
+				try {
+
+					out.write(queue.take());
+					out.flush();
+					if (outputThread.isInterrupted())
+						break;
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					outputThread.interrupt();
+					break;
+				}
+			}
+			inputThread.interrupt();
+			System.out.println("DataStreamThread finish");
 		}
-		readRead.interrupt();
-		System.out.println("DataStreamThread finish");
-	}
+	});
 
 	// input
-	Thread readRead = new Thread(new Runnable() {
+	Thread inputThread = new Thread(new Runnable() {
 
 		public void run() {
 			try {
-				while (!isInterrupted()) {
+				while (!inputThread.isInterrupted()) {
 //					System.out.println("input");
 
 					byte[] lenBytes = new byte[4];
@@ -84,6 +84,25 @@ public class DataStreamThread extends Thread implements IKeyboardInput {
 			queue.put(input);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void start() {
+		outputThread.start();
+		inputThread.start();
+	}
+
+	public void interrupt() {
+		try {
+			outputThread.interrupt();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//
+		try {
+			inputThread.interrupt();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

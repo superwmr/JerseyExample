@@ -5,6 +5,7 @@ import java.io.DataInputStream;
 import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 
+import test.TestCase;
 import transfer_protobuf.Commands;
 import transfer_protobuf.Commands.Bank;
 import transfer_protobuf.Commands.Command;
@@ -39,9 +40,14 @@ public class KeyboardInputThread extends Thread {
 		while (true) {
 			try {
 				Utils.printUserMenu();
-				BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+				String msg = "";
 
-				String msg = buf.readLine();
+				if (TestCase.isRunTestCase) {
+					msg = TestCase.takeCommand();
+				} else {
+					BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+					msg = buf.readLine();
+				}
 				System.out.println("ouput = " + msg);
 				//
 				if (msg == null || msg.isEmpty())
@@ -128,8 +134,8 @@ public class KeyboardInputThread extends Thread {
 
 				inputData.onInput(len.array());
 				inputData.onInput(cmdBuildArray);
-				
-				System.out.println("cmdInstance = "+cmdBuild.toString());
+
+				System.out.println("cmdInstance = " + cmdBuild.toString());
 
 				if (isInterrupted())
 					break;

@@ -33,6 +33,8 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		sb.append("\n - Header: ").append(requestContext.getHeaders());
 		sb.append("\n - Body: ").append(getEntityBody(requestContext));
 		System.out.println("HTTP REQUEST : " + sb.toString());
+		
+		
 	}
 
 	private String getPathParameters(ContainerRequestContext requestContext) {
