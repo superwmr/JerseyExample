@@ -30,7 +30,6 @@ public class DataStreamThread implements IKeyboardInput {
 	Thread outputThread = new Thread(new Runnable() {
 		public void run() {
 			try {
-				in = new DataInputStream(socket.getInputStream());
 				out = new DataOutputStream(socket.getOutputStream());
 //				readRead.start();
 			} catch (Exception e) {
@@ -62,6 +61,8 @@ public class DataStreamThread implements IKeyboardInput {
 
 		public void run() {
 			try {
+				in = new DataInputStream(socket.getInputStream());
+				
 				while (!inputThread.isInterrupted()) {
 //					System.out.println("input");
 
@@ -101,7 +102,7 @@ public class DataStreamThread implements IKeyboardInput {
 		inputThread.start();
 	}
 
-	public void interrupt() {
+	public synchronized void interrupt() {
 		try {
 			outputThread.interrupt();
 		} catch (Exception e) {
