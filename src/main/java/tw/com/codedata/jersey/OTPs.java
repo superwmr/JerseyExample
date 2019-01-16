@@ -36,7 +36,7 @@ public class OTPs {
 	private synchronized String callAPIs(String p, String b, String t) {
 		String strResult = "";
 		try {
-			URL url = new URL("http://35.194.242.29/api/v1.0/otp?p=" + p.replace("+", "%2B") + "&b=" + b + "&t=" + t);
+			URL url = new URL("http://35.194.242.29/v1.0/otps?p=" + p.replace("+", "%2B") + "&b=" + b + "&t=" + t);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
