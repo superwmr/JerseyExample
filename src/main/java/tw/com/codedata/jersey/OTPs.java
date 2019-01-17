@@ -24,7 +24,7 @@ public class OTPs {
 //		System.out.println("p = " + p + ", b = " + b);
 
 		String sms = callAPIs(p, b, t);
-		System.out.println("sms = " + sms);
+//		System.out.println("sms = " + sms);
 		//
 //		String trueSms = new String(sms);
 //		sms = "";

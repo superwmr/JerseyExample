@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import test.Config;
 import test.TestCase;
 import transfer_protobuf.Commands;
 import transfer_protobuf.Commands.Bank;
@@ -43,7 +44,7 @@ public class KeyboardInputThread extends Thread {
 				Utils.printUserMenu();
 				String msg = "";
 
-				if (TestCase.isRunTestCase) {
+				if (Config.isRunTestCase) {
 					msg = TestCase.takeCommand();
 				} else {
 					BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));

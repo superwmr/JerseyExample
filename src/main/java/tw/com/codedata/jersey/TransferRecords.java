@@ -4,6 +4,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
+import test.Config;
 import test.TestCase;
 
 @Path("/transfer_records")
@@ -24,7 +25,7 @@ public class TransferRecords {
 				e.printStackTrace();
 			}
 			
-			if (TestCase.isRunTestCase) {
+			if (Config.isRunTestCase) {
 				TestCase.putNextCommand();
 			}
 		}

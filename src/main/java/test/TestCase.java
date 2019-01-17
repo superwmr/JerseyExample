@@ -4,8 +4,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class TestCase {
 
-	public static boolean isRunTestCase = true;;
-
 	/**
 	 * 前一個執行的command
 	 */

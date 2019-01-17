@@ -10,6 +10,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.swing.RowFilter.ComparisonType;
 
+import test.Config;
 import test.TestCase;
 import transfer_protobuf.Commands;
 import transfer_protobuf.Commands.Command;
@@ -74,7 +75,7 @@ public class DataStreamThread implements IKeyboardInput {
 					Command cmd = Commands.Command.parseFrom(dataBytes);
 					System.out.println("cmd = " + cmd.toString());
 					
-					if(TestCase.isRunTestCase && cmd.getType() == Command.Type.REGISTER)
+					if(Config.isRunTestCase && cmd.getType() == Command.Type.REGISTER)
 					{
 						TestCase.putNextCommand();
 					}

@@ -38,11 +38,13 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 //		sb.append("User: ").append(requestContext.getSecurityContext().getUserPrincipal() == null ? "unknown"
 //				: requestContext.getSecurityContext().getUserPrincipal());
 		String path = requestContext.getUriInfo().getPath();
-		sb.append("\n - Path: ").append(path);
-		sb.append("\n - Parameters: ").append(getPathParameters(requestContext));
-		sb.append("\n - Header: ").append(requestContext.getHeaders());
+		sb.append("\n-Path:").append(path);
+		sb.append("\n-Parameters:").append(getPathParameters(requestContext));
+		sb.append("\n-Header:").append(requestContext.getHeaders());
 		String body = getEntityBody(requestContext);
-		sb.append("\n - Body: ").append(body);
+		sb.append("\n-Body:").append(body);
+		//
+		System.out.println("st========================================");
 		System.out.println("HTTP REQUEST : " + sb.toString());
 
 		if (path.toLowerCase().indexOf("sync_status") != -1) {
@@ -116,9 +118,9 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
 			throws IOException {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Header: ").append(responseContext.getHeaders());
-		sb.append(" - Entity: ").append(responseContext.getEntity());
-		System.out.println("HTTP RESPONSE : " + sb.toString());
-		System.out.println("========================================");
+		sb.append("\n-Header:").append(responseContext.getHeaders());
+		sb.append("\n-Body:").append(responseContext.getEntity());
+		System.out.println("HTTP RESPONSE :" + sb.toString());
+		System.out.println("end========================================");
 	}
 }
