@@ -25,8 +25,6 @@ public class DataStreamThread implements IKeyboardInput {
 		this.socket = socket;
 	}
 
-	private LinkedBlockingQueue<byte[]> queue = new LinkedBlockingQueue();
-
 	Thread outputThread = new Thread(new Runnable() {
 		public void run() {
 			try {
@@ -40,7 +38,7 @@ public class DataStreamThread implements IKeyboardInput {
 			while (true) {
 				try {
 
-					out.write(queue.take());
+					out.write(SocketCommand.queue.take());
 					out.flush();
 					if (outputThread.isInterrupted())
 						break;
@@ -90,7 +88,7 @@ public class DataStreamThread implements IKeyboardInput {
 
 	public void onInput(byte[] input) {
 		try {
-			queue.put(input);
+			SocketCommand.queue.put(input);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

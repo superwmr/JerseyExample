@@ -10,11 +10,23 @@ import test.TestCase;
 public class TransferRecords {
 	@POST
 	public Response getResponse() {
-		
-		if(TestCase.isRunTestCase)
-			TestCase.putNextCommand();
-		
+
+		sendCommand.start();
 		String result = "{\"code\": \"200\",\"message\": \"statusOK\", \"success\": true}";
 		return Response.status(200).entity(result).build();
 	}
+
+	Thread sendCommand = new Thread(new Runnable() {
+		public void run() {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			if (TestCase.isRunTestCase) {
+				TestCase.putNextCommand();
+			}
+		}
+	});
 }

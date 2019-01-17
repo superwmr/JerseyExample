@@ -13,17 +13,23 @@ public final class Commands {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
-    java.util.List<java.lang.Integer> getCodeList();
+    java.util.List<String>
+        getCodeList();
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
     int getCodeCount();
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
-    int getCode(int index);
+    java.lang.String getCode(int index);
+    /**
+     * <code>repeated string code = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getCodeBytes(int index);
   }
   /**
    * Protobuf type {@code transfer_protobuf.BankCodeList}
@@ -34,28 +40,35 @@ public final class Commands {
       // @@protoc_insertion_point(message_implements:transfer_protobuf.BankCodeList)
       BankCodeListOrBuilder {
     private BankCodeList() {
-      code_ = emptyIntList();
+      code_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     }
     public static final int CODE_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.IntList code_;
+    private com.google.protobuf.Internal.ProtobufList<String> code_;
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
-    public java.util.List<java.lang.Integer>
-        getCodeList() {
+    public java.util.List<String> getCodeList() {
       return code_;
     }
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
     public int getCodeCount() {
       return code_.size();
     }
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
-    public int getCode(int index) {
-      return code_.getInt(index);
+    public java.lang.String getCode(int index) {
+      return code_.get(index);
+    }
+    /**
+     * <code>repeated string code = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCodeBytes(int index) {
+      return com.google.protobuf.ByteString.copyFromUtf8(
+          code_.get(index));
     }
     private void ensureCodeIsMutable() {
       if (!code_.isModifiable()) {
@@ -64,40 +77,58 @@ public final class Commands {
        }
     }
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
     private void setCode(
-        int index, int value) {
-      ensureCodeIsMutable();
-      code_.setInt(index, value);
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCodeIsMutable();
+      code_.set(index, value);
     }
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
-    private void addCode(int value) {
-      ensureCodeIsMutable();
-      code_.addInt(value);
+    private void addCode(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCodeIsMutable();
+      code_.add(value);
     }
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
     private void addAllCode(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
+        java.lang.Iterable<java.lang.String> values) {
       ensureCodeIsMutable();
       com.google.protobuf.AbstractMessageLite.addAll(
           values, code_);
     }
     /**
-     * <code>repeated int32 code = 1;</code>
+     * <code>repeated string code = 1;</code>
      */
     private void clearCode() {
-      code_ = emptyIntList();
+      code_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+    }
+    /**
+     * <code>repeated string code = 1;</code>
+     */
+    private void addCodeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCodeIsMutable();
+      code_.add(value.toStringUtf8());
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < code_.size(); i++) {
-        output.writeInt32(1, code_.getInt(i));
+        output.writeString(1, code_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -111,7 +142,7 @@ public final class Commands {
         int dataSize = 0;
         for (int i = 0; i < code_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(code_.getInt(i));
+            .computeStringSizeNoTag(code_.get(i));
         }
         size += dataSize;
         size += 1 * getCodeList().size();
@@ -204,57 +235,74 @@ public final class Commands {
 
 
       /**
-       * <code>repeated int32 code = 1;</code>
+       * <code>repeated string code = 1;</code>
        */
-      public java.util.List<java.lang.Integer>
+      public java.util.List<String>
           getCodeList() {
         return java.util.Collections.unmodifiableList(
             instance.getCodeList());
       }
       /**
-       * <code>repeated int32 code = 1;</code>
+       * <code>repeated string code = 1;</code>
        */
       public int getCodeCount() {
         return instance.getCodeCount();
       }
       /**
-       * <code>repeated int32 code = 1;</code>
+       * <code>repeated string code = 1;</code>
        */
-      public int getCode(int index) {
+      public java.lang.String getCode(int index) {
         return instance.getCode(index);
       }
       /**
-       * <code>repeated int32 code = 1;</code>
+       * <code>repeated string code = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCodeBytes(int index) {
+        return instance.getCodeBytes(index);
+      }
+      /**
+       * <code>repeated string code = 1;</code>
        */
       public Builder setCode(
-          int index, int value) {
+          int index, java.lang.String value) {
         copyOnWrite();
         instance.setCode(index, value);
         return this;
       }
       /**
-       * <code>repeated int32 code = 1;</code>
+       * <code>repeated string code = 1;</code>
        */
-      public Builder addCode(int value) {
+      public Builder addCode(
+          java.lang.String value) {
         copyOnWrite();
         instance.addCode(value);
         return this;
       }
       /**
-       * <code>repeated int32 code = 1;</code>
+       * <code>repeated string code = 1;</code>
        */
       public Builder addAllCode(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
+          java.lang.Iterable<java.lang.String> values) {
         copyOnWrite();
         instance.addAllCode(values);
         return this;
       }
       /**
-       * <code>repeated int32 code = 1;</code>
+       * <code>repeated string code = 1;</code>
        */
       public Builder clearCode() {
         copyOnWrite();
         instance.clearCode();
+        return this;
+      }
+      /**
+       * <code>repeated string code = 1;</code>
+       */
+      public Builder addCodeBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.addCodeBytes(value);
         return this;
       }
 
@@ -280,7 +328,7 @@ public final class Commands {
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
           transfer_protobuf.Commands.BankCodeList other = (transfer_protobuf.Commands.BankCodeList) arg1;
-          code_= visitor.visitIntList(code_, other.code_);
+          code_= visitor.visitList(code_, other.code_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -305,25 +353,13 @@ public final class Commands {
                   }
                   break;
                 }
-                case 8: {
+                case 10: {
+                  String s = input.readString();
                   if (!code_.isModifiable()) {
                     code_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(code_);
                   }
-                  code_.addInt(input.readInt32());
-                  break;
-                }
-                case 10: {
-                  int length = input.readRawVarint32();
-                  int limit = input.pushLimit(length);
-                  if (!code_.isModifiable() && input.getBytesUntilLimit() > 0) {
-                    code_ =
-                        com.google.protobuf.GeneratedMessageLite.mutableCopy(code_);
-                  }
-                  while (input.getBytesUntilLimit() > 0) {
-                    code_.addInt(input.readInt32());
-                  }
-                  input.popLimit(limit);
+                  code_.add(s);
                   break;
                 }
               }
@@ -2499,6 +2535,23 @@ public final class Commands {
      * <code>optional .transfer_protobuf.SyncBalanceData sync_balance_data = 6;</code>
      */
     transfer_protobuf.Commands.SyncBalanceData getSyncBalanceData();
+
+    /**
+     * <pre>
+     *optional LoginData login_data = 7;
+     * </pre>
+     *
+     * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+     */
+    boolean hasLogoutData();
+    /**
+     * <pre>
+     *optional LoginData login_data = 7;
+     * </pre>
+     *
+     * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+     */
+    transfer_protobuf.Commands.LogoutData getLogoutData();
   }
   /**
    * Protobuf type {@code transfer_protobuf.Command}
@@ -2544,6 +2597,14 @@ public final class Commands {
        * <code>SYNC_BALANCE = 3;</code>
        */
       SYNC_BALANCE(3),
+      /**
+       * <pre>
+       *LOGIN       = 4; // paramenter : Device, LoginData
+       * </pre>
+       *
+       * <code>LOGOUT = 4;</code>
+       */
+      LOGOUT(4),
       ;
 
       /**
@@ -2574,6 +2635,14 @@ public final class Commands {
        * <code>SYNC_BALANCE = 3;</code>
        */
       public static final int SYNC_BALANCE_VALUE = 3;
+      /**
+       * <pre>
+       *LOGIN       = 4; // paramenter : Device, LoginData
+       * </pre>
+       *
+       * <code>LOGOUT = 4;</code>
+       */
+      public static final int LOGOUT_VALUE = 4;
 
 
       public final int getNumber() {
@@ -2594,6 +2663,7 @@ public final class Commands {
           case 1: return REGISTER;
           case 2: return TRANSFER;
           case 3: return SYNC_BALANCE;
+          case 4: return LOGOUT;
           default: return null;
         }
       }
@@ -3027,6 +3097,82 @@ public final class Commands {
       bitField0_ = (bitField0_ & ~0x00000020);
     }
 
+    public static final int LOGOUT_DATA_FIELD_NUMBER = 7;
+    private transfer_protobuf.Commands.LogoutData logoutData_;
+    /**
+     * <pre>
+     *optional LoginData login_data = 7;
+     * </pre>
+     *
+     * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+     */
+    public boolean hasLogoutData() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <pre>
+     *optional LoginData login_data = 7;
+     * </pre>
+     *
+     * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+     */
+    public transfer_protobuf.Commands.LogoutData getLogoutData() {
+      return logoutData_ == null ? transfer_protobuf.Commands.LogoutData.getDefaultInstance() : logoutData_;
+    }
+    /**
+     * <pre>
+     *optional LoginData login_data = 7;
+     * </pre>
+     *
+     * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+     */
+    private void setLogoutData(transfer_protobuf.Commands.LogoutData value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      logoutData_ = value;
+      bitField0_ |= 0x00000040;
+      }
+    /**
+     * <pre>
+     *optional LoginData login_data = 7;
+     * </pre>
+     *
+     * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+     */
+    private void setLogoutData(
+        transfer_protobuf.Commands.LogoutData.Builder builderForValue) {
+      logoutData_ = builderForValue.build();
+      bitField0_ |= 0x00000040;
+    }
+    /**
+     * <pre>
+     *optional LoginData login_data = 7;
+     * </pre>
+     *
+     * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+     */
+    private void mergeLogoutData(transfer_protobuf.Commands.LogoutData value) {
+      if (logoutData_ != null &&
+          logoutData_ != transfer_protobuf.Commands.LogoutData.getDefaultInstance()) {
+        logoutData_ =
+          transfer_protobuf.Commands.LogoutData.newBuilder(logoutData_).mergeFrom(value).buildPartial();
+      } else {
+        logoutData_ = value;
+      }
+      bitField0_ |= 0x00000040;
+    }
+    /**
+     * <pre>
+     *optional LoginData login_data = 7;
+     * </pre>
+     *
+     * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+     */
+    private void clearLogoutData() {  logoutData_ = null;
+      bitField0_ = (bitField0_ & ~0x00000040);
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3046,6 +3192,9 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(6, getSyncBalanceData());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeMessage(7, getLogoutData());
       }
       unknownFields.writeTo(output);
     }
@@ -3078,6 +3227,10 @@ public final class Commands {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getSyncBalanceData());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getLogoutData());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -3404,6 +3557,75 @@ public final class Commands {
         return this;
       }
 
+      /**
+       * <pre>
+       *optional LoginData login_data = 7;
+       * </pre>
+       *
+       * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+       */
+      public boolean hasLogoutData() {
+        return instance.hasLogoutData();
+      }
+      /**
+       * <pre>
+       *optional LoginData login_data = 7;
+       * </pre>
+       *
+       * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+       */
+      public transfer_protobuf.Commands.LogoutData getLogoutData() {
+        return instance.getLogoutData();
+      }
+      /**
+       * <pre>
+       *optional LoginData login_data = 7;
+       * </pre>
+       *
+       * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+       */
+      public Builder setLogoutData(transfer_protobuf.Commands.LogoutData value) {
+        copyOnWrite();
+        instance.setLogoutData(value);
+        return this;
+        }
+      /**
+       * <pre>
+       *optional LoginData login_data = 7;
+       * </pre>
+       *
+       * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+       */
+      public Builder setLogoutData(
+          transfer_protobuf.Commands.LogoutData.Builder builderForValue) {
+        copyOnWrite();
+        instance.setLogoutData(builderForValue);
+        return this;
+      }
+      /**
+       * <pre>
+       *optional LoginData login_data = 7;
+       * </pre>
+       *
+       * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+       */
+      public Builder mergeLogoutData(transfer_protobuf.Commands.LogoutData value) {
+        copyOnWrite();
+        instance.mergeLogoutData(value);
+        return this;
+      }
+      /**
+       * <pre>
+       *optional LoginData login_data = 7;
+       * </pre>
+       *
+       * <code>optional .transfer_protobuf.LogoutData logout_data = 7;</code>
+       */
+      public Builder clearLogoutData() {  copyOnWrite();
+        instance.clearLogoutData();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:transfer_protobuf.Command)
     }
     private byte memoizedIsInitialized = -1;
@@ -3462,6 +3684,14 @@ public final class Commands {
               return null;
             }
           }
+          if (hasLogoutData()) {
+            if (!getLogoutData().isInitialized()) {
+              if (shouldMemoize) {
+                memoizedIsInitialized = 0;
+              }
+              return null;
+            }
+          }
           if (shouldMemoize) memoizedIsInitialized = 1;
           return DEFAULT_INSTANCE;
 
@@ -3483,6 +3713,7 @@ public final class Commands {
           registerData_ = visitor.visitMessage(registerData_, other.registerData_);
           transferData_ = visitor.visitMessage(transferData_, other.transferData_);
           syncBalanceData_ = visitor.visitMessage(syncBalanceData_, other.syncBalanceData_);
+          logoutData_ = visitor.visitMessage(logoutData_, other.logoutData_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -3580,6 +3811,19 @@ public final class Commands {
                     syncBalanceData_ = subBuilder.buildPartial();
                   }
                   bitField0_ |= 0x00000020;
+                  break;
+                }
+                case 58: {
+                  transfer_protobuf.Commands.LogoutData.Builder subBuilder = null;
+                  if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                    subBuilder = logoutData_.toBuilder();
+                  }
+                  logoutData_ = input.readMessage(transfer_protobuf.Commands.LogoutData.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(logoutData_);
+                    logoutData_ = subBuilder.buildPartial();
+                  }
+                  bitField0_ |= 0x00000040;
                   break;
                 }
               }
@@ -5545,6 +5789,351 @@ public final class Commands {
     private static volatile com.google.protobuf.Parser<SyncBalanceData> PARSER;
 
     public static com.google.protobuf.Parser<SyncBalanceData> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface LogoutDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:transfer_protobuf.LogoutData)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>required .transfer_protobuf.Bank bank = 1;</code>
+     */
+    boolean hasBank();
+    /**
+     * <code>required .transfer_protobuf.Bank bank = 1;</code>
+     */
+    transfer_protobuf.Commands.Bank getBank();
+  }
+  /**
+   * Protobuf type {@code transfer_protobuf.LogoutData}
+   */
+  public  static final class LogoutData extends
+      com.google.protobuf.GeneratedMessageLite<
+          LogoutData, LogoutData.Builder> implements
+      // @@protoc_insertion_point(message_implements:transfer_protobuf.LogoutData)
+      LogoutDataOrBuilder {
+    private LogoutData() {
+    }
+    private int bitField0_;
+    public static final int BANK_FIELD_NUMBER = 1;
+    private transfer_protobuf.Commands.Bank bank_;
+    /**
+     * <code>required .transfer_protobuf.Bank bank = 1;</code>
+     */
+    public boolean hasBank() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .transfer_protobuf.Bank bank = 1;</code>
+     */
+    public transfer_protobuf.Commands.Bank getBank() {
+      return bank_ == null ? transfer_protobuf.Commands.Bank.getDefaultInstance() : bank_;
+    }
+    /**
+     * <code>required .transfer_protobuf.Bank bank = 1;</code>
+     */
+    private void setBank(transfer_protobuf.Commands.Bank value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      bank_ = value;
+      bitField0_ |= 0x00000001;
+      }
+    /**
+     * <code>required .transfer_protobuf.Bank bank = 1;</code>
+     */
+    private void setBank(
+        transfer_protobuf.Commands.Bank.Builder builderForValue) {
+      bank_ = builderForValue.build();
+      bitField0_ |= 0x00000001;
+    }
+    /**
+     * <code>required .transfer_protobuf.Bank bank = 1;</code>
+     */
+    private void mergeBank(transfer_protobuf.Commands.Bank value) {
+      if (bank_ != null &&
+          bank_ != transfer_protobuf.Commands.Bank.getDefaultInstance()) {
+        bank_ =
+          transfer_protobuf.Commands.Bank.newBuilder(bank_).mergeFrom(value).buildPartial();
+      } else {
+        bank_ = value;
+      }
+      bitField0_ |= 0x00000001;
+    }
+    /**
+     * <code>required .transfer_protobuf.Bank bank = 1;</code>
+     */
+    private void clearBank() {  bank_ = null;
+      bitField0_ = (bitField0_ & ~0x00000001);
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, getBank());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getBank());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static transfer_protobuf.Commands.LogoutData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static transfer_protobuf.Commands.LogoutData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static transfer_protobuf.Commands.LogoutData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static transfer_protobuf.Commands.LogoutData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static transfer_protobuf.Commands.LogoutData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static transfer_protobuf.Commands.LogoutData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static transfer_protobuf.Commands.LogoutData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static transfer_protobuf.Commands.LogoutData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static transfer_protobuf.Commands.LogoutData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static transfer_protobuf.Commands.LogoutData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(transfer_protobuf.Commands.LogoutData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code transfer_protobuf.LogoutData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          transfer_protobuf.Commands.LogoutData, Builder> implements
+        // @@protoc_insertion_point(builder_implements:transfer_protobuf.LogoutData)
+        transfer_protobuf.Commands.LogoutDataOrBuilder {
+      // Construct using transfer_protobuf.Commands.LogoutData.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>required .transfer_protobuf.Bank bank = 1;</code>
+       */
+      public boolean hasBank() {
+        return instance.hasBank();
+      }
+      /**
+       * <code>required .transfer_protobuf.Bank bank = 1;</code>
+       */
+      public transfer_protobuf.Commands.Bank getBank() {
+        return instance.getBank();
+      }
+      /**
+       * <code>required .transfer_protobuf.Bank bank = 1;</code>
+       */
+      public Builder setBank(transfer_protobuf.Commands.Bank value) {
+        copyOnWrite();
+        instance.setBank(value);
+        return this;
+        }
+      /**
+       * <code>required .transfer_protobuf.Bank bank = 1;</code>
+       */
+      public Builder setBank(
+          transfer_protobuf.Commands.Bank.Builder builderForValue) {
+        copyOnWrite();
+        instance.setBank(builderForValue);
+        return this;
+      }
+      /**
+       * <code>required .transfer_protobuf.Bank bank = 1;</code>
+       */
+      public Builder mergeBank(transfer_protobuf.Commands.Bank value) {
+        copyOnWrite();
+        instance.mergeBank(value);
+        return this;
+      }
+      /**
+       * <code>required .transfer_protobuf.Bank bank = 1;</code>
+       */
+      public Builder clearBank() {  copyOnWrite();
+        instance.clearBank();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:transfer_protobuf.LogoutData)
+    }
+    private byte memoizedIsInitialized = -1;
+    protected final Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new transfer_protobuf.Commands.LogoutData();
+        }
+        case IS_INITIALIZED: {
+          byte isInitialized = memoizedIsInitialized;
+          if (isInitialized == 1) return DEFAULT_INSTANCE;
+          if (isInitialized == 0) return null;
+
+          boolean shouldMemoize = ((Boolean) arg0).booleanValue();
+          if (!hasBank()) {
+            if (shouldMemoize) {
+              memoizedIsInitialized = 0;
+            }
+            return null;
+          }
+          if (shouldMemoize) memoizedIsInitialized = 1;
+          return DEFAULT_INSTANCE;
+
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          transfer_protobuf.Commands.LogoutData other = (transfer_protobuf.Commands.LogoutData) arg1;
+          bank_ = visitor.visitMessage(bank_, other.bank_);
+          if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
+              .INSTANCE) {
+            bitField0_ |= other.bitField0_;
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!parseUnknownField(tag, input)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  transfer_protobuf.Commands.Bank.Builder subBuilder = null;
+                  if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                    subBuilder = bank_.toBuilder();
+                  }
+                  bank_ = input.readMessage(transfer_protobuf.Commands.Bank.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(bank_);
+                    bank_ = subBuilder.buildPartial();
+                  }
+                  bitField0_ |= 0x00000001;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (transfer_protobuf.Commands.LogoutData.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:transfer_protobuf.LogoutData)
+    private static final transfer_protobuf.Commands.LogoutData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new LogoutData();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static transfer_protobuf.Commands.LogoutData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<LogoutData> PARSER;
+
+    public static com.google.protobuf.Parser<LogoutData> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }

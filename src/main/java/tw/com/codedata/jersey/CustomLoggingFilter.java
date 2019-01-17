@@ -18,6 +18,13 @@ import javax.ws.rs.core.MultivaluedMap;
 
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.message.internal.ReaderWriter;
+import org.glassfish.jersey.server.JSONP;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import test.RsSyncStatus;
+import test.TestCase;
 
 /**
  * Servlet Filter implementation class CustomLoggingFilter
@@ -26,15 +33,27 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 		StringBuilder sb = new StringBuilder();
-		sb.append("User: ").append(requestContext.getSecurityContext().getUserPrincipal() == null ? "unknown"
-				: requestContext.getSecurityContext().getUserPrincipal());
-		sb.append("\n - Path: ").append(requestContext.getUriInfo().getPath());
+//		sb.append("User: ").append(requestContext.getSecurityContext().getUserPrincipal() == null ? "unknown"
+//				: requestContext.getSecurityContext().getUserPrincipal());
+		String path = requestContext.getUriInfo().getPath();
+		sb.append("\n - Path: ").append(path);
 		sb.append("\n - Parameters: ").append(getPathParameters(requestContext));
 		sb.append("\n - Header: ").append(requestContext.getHeaders());
-		sb.append("\n - Body: ").append(getEntityBody(requestContext));
+		String strJson = getEntityBody(requestContext);
+		sb.append("\n - Body: ").append(strJson);
 		System.out.println("HTTP REQUEST : " + sb.toString());
-		
-		
+
+		if (path.toLowerCase().indexOf("sync_status") != -1 && isLogoutFinish(strJson)) {
+			TestCase.putNextCommand();
+		}
+	}
+
+	private boolean isLogoutFinish(String strJson) {
+
+		Gson g = new GsonBuilder().create();
+		RsSyncStatus rsSyncStatus = g.fromJson(strJson, RsSyncStatus.class);
+
+		return rsSyncStatus.getStatus_type().equals("0");
 	}
 
 	private String getPathParameters(ContainerRequestContext requestContext) {

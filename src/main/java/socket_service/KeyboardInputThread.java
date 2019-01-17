@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import test.TestCase;
 import transfer_protobuf.Commands;
@@ -11,6 +12,7 @@ import transfer_protobuf.Commands.Bank;
 import transfer_protobuf.Commands.Command;
 import transfer_protobuf.Commands.Command.Response;
 import transfer_protobuf.Commands.Command.Type;
+import transfer_protobuf.Commands.LogoutData;
 import transfer_protobuf.Commands.SyncBalanceData;
 import transfer_protobuf.Commands.TransferData;
 import tw.com.codedata.jersey.OTPs;
@@ -28,7 +30,6 @@ public class KeyboardInputThread extends Thread {
 		try {
 			return msg.split(" ")[index];
 		} catch (Exception e) {
-//			e.printStackTrace();
 			return "";
 		}
 	}
@@ -120,6 +121,11 @@ public class KeyboardInputThread extends Thread {
 					//
 					syncBalanceData.setBank(bank);
 					cmdInstance.setSyncBalanceData(syncBalanceData);
+				} else if (cmd.equals("" + Type.LOGOUT_VALUE)) {// 4
+					System.out.println("LOGOUT_VALUE");
+					cmdInstance.setType(Type.LOGOUT);
+					LogoutData.Builder logoutBuilder = LogoutData.newBuilder();
+					cmdInstance.setLogoutData(logoutBuilder);
 				} else {
 					continue;
 				}
