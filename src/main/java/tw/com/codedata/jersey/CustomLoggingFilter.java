@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -24,6 +25,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import test.RsSyncStatus;
+import test.RsTransferRecords;
 import test.TestCase;
 
 /**
@@ -43,9 +45,29 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		sb.append("\n - Body: ").append(body);
 		System.out.println("HTTP REQUEST : " + sb.toString());
 
-		if (path.toLowerCase().indexOf("sync_status") != -1 && isLogoutFinish(body)) {
-			TestCase.putNextCommand();
+		if (path.toLowerCase().indexOf("sync_status") != -1) {
+			if (isLogoutFinish(body))
+				TestCase.putNextCommand();
+		} else if (path.toLowerCase().indexOf("transfer_records") != -1) {
+			calSuccessRate(body);
 		}
+	}
+
+	private static int success = 0;
+	private static int total = 0;
+
+	private void calSuccessRate(String body) {
+		Gson g = new GsonBuilder().create();
+		RsTransferRecords rsTransferRecords = g.fromJson(body, RsTransferRecords.class);
+
+		total++;
+
+		if (rsTransferRecords.getError_code().equals("00")) {
+			success++;
+		}
+		System.out.println("第" + total + "次轉帳。");
+		String rate = new DecimalFormat("0.00").format((((float) success / (float) total) * 100));
+		System.out.println("轉帳成功率: " + success + " / " + total + " = " + rate + "%");
 	}
 
 	private boolean isLogoutFinish(String strJson) {
