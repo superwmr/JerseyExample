@@ -12,7 +12,9 @@ public class TransferRecords {
 	@POST
 	public Response getResponse() {
 
-		sendCommand.start();
+		if (Config.isRunTestCase)
+			sendCommand.start();
+
 		String result = "{\"code\": \"200\",\"message\": \"statusOK\", \"success\": true}";
 		return Response.status(200).entity(result).build();
 	}
@@ -24,10 +26,8 @@ public class TransferRecords {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
-			if (Config.isRunTestCase) {
-				TestCase.putNextCommand();
-			}
+
+			TestCase.putNextCommand();
 		}
 	});
 }
