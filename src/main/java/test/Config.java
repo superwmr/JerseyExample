@@ -2,6 +2,6 @@ package test;
 
 public class Config {
 
-	public static boolean isRunTestCase = true;
+	public static boolean isRunTestCase = false;
 
 }

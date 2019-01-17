@@ -67,6 +67,7 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		if (rsTransferRecords.getError_code().equals("00")) {
 			success++;
 		}
+		
 		System.out.println("第" + total + "次轉帳。");
 		String rate = new DecimalFormat("0.00").format((((float) success / (float) total) * 100));
 		System.out.println("轉帳成功率: " + success + " / " + total + " = " + rate + "%");
