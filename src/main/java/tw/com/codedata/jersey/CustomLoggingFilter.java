@@ -24,6 +24,7 @@ import org.glassfish.jersey.server.JSONP;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import test.Config;
 import test.RsSyncStatus;
 import test.RsTransferRecords;
 import test.TestCase;
@@ -47,11 +48,13 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		System.out.println("st========================================");
 		System.out.println("HTTP REQUEST : " + sb.toString());
 
-		if (path.toLowerCase().indexOf("sync_status") != -1) {
-			if (isLogoutFinish(body))
-				TestCase.putNextCommand();
-		} else if (path.toLowerCase().indexOf("transfer_records") != -1) {
-			calSuccessRate(body);
+		if (Config.isRunTestCase) {
+			if (path.toLowerCase().indexOf("sync_status") != -1) {
+				if (isLogoutFinish(body))
+					TestCase.putNextCommand();
+			} else if (path.toLowerCase().indexOf("transfer_records") != -1) {
+				calSuccessRate(body);
+			}
 		}
 	}
 
@@ -67,7 +70,7 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		if (rsTransferRecords.getError_code().equals("00")) {
 			success++;
 		}
-		
+
 		System.out.println("第" + total + "次轉帳。");
 		String rate = new DecimalFormat("0.00").format((((float) success / (float) total) * 100));
 		System.out.println("轉帳成功率: " + success + " / " + total + " = " + rate + "%");
