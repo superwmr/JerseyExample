@@ -39,11 +39,11 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		sb.append("\n - Path: ").append(path);
 		sb.append("\n - Parameters: ").append(getPathParameters(requestContext));
 		sb.append("\n - Header: ").append(requestContext.getHeaders());
-		String strJson = getEntityBody(requestContext);
-		sb.append("\n - Body: ").append(strJson);
+		String body = getEntityBody(requestContext);
+		sb.append("\n - Body: ").append(body);
 		System.out.println("HTTP REQUEST : " + sb.toString());
 
-		if (path.toLowerCase().indexOf("sync_status") != -1 && isLogoutFinish(strJson)) {
+		if (path.toLowerCase().indexOf("sync_status") != -1 && isLogoutFinish(body)) {
 			TestCase.putNextCommand();
 		}
 	}
