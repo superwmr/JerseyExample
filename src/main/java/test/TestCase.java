@@ -74,6 +74,6 @@ public class TestCase {
 		String accountCmd = transferInfo.split(" ")[1] + transferInfo.split(" ")[2] + transferInfo.split(" ")[3];
 		String preAccountCmd = preTransferInfo.split(" ")[1] + preTransferInfo.split(" ")[2] + preTransferInfo.split(" ")[3];
 		//
-		return accountCmd.contentEquals(preAccountCmd);
+		return accountCmd.equals(preAccountCmd);
 	}
 }
