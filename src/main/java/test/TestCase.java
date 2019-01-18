@@ -50,23 +50,28 @@ public class TestCase {
 //						"" + System.currentTimeMillis());
 
 		if (isSameAccount(command, preCommand)) {
-			trandfer(command);
+			transfer(command);
+			preCommand = command;
 		} else {
 			logout();
 			nonSendCommand = command;
 		}
-
-		preCommand = command;
 	}
 
 	/**
 	 * 轉帳
 	 */
-	private static void trandfer(String strCommand) {
+	private static void transfer(String strCommand) {
 		queue.clear();
 		queue.add(strCommand);
 	}
 
+	/**
+	 * 檢查帳號是否相同
+	 * @param transferInfo
+	 * @param preTransferInfo
+	 * @return
+	 */
 	private static boolean isSameAccount(String transferInfo, String preTransferInfo) {
 		if (preTransferInfo.isEmpty())
 			return false;
