@@ -68,7 +68,7 @@ public class TestCase {
 	}
 
 	private static boolean isSameAccount(String transferInfo, String preTransferInfo) {
-		if (preCommand.isEmpty())
+		if (preTransferInfo.isEmpty())
 			return false;
 
 		String accountCmd = transferInfo.split(" ")[1] + transferInfo.split(" ")[2] + transferInfo.split(" ")[3];
