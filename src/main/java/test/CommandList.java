@@ -20,4 +20,8 @@ public class CommandList {
 	public static String getCommands() {
 		return commands[(int) (System.currentTimeMillis() % commands.length)];
 	}
+	
+	public static String[] getTotalCommands() {
+		return commands;
+	}
 }

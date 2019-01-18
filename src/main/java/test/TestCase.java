@@ -5,7 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class TestCase {
 
 	/**
-	 * 前一個執行的command
+	 * 前一個己執行的command
 	 */
 	private static String preCommand = "";
 
