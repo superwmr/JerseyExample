@@ -25,7 +25,6 @@ public class TransferRecords {
 			Report.totalTimer += rsTime;
 			System.out.println("本次完成時間 = " + rsTime / 1000 + "秒");
 			System.out.println("平均完成時間 = " + Report.totalTimer / Report.transferCount / 1000 + "秒");
-			System.out.println(new Date(rsTime));
 		}
 		//
 		String result = "{\"code\": \"200\",\"message\": \"statusOK\", \"success\": true}";
