@@ -1,5 +1,7 @@
 package test;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class TestCase {
@@ -54,7 +56,7 @@ public class TestCase {
 			preCommand = command;
 		} else {
 			logout();
-			nonSendCommand = command;
+			nonSendCommand = command;	
 		}
 	}
 
@@ -64,6 +66,7 @@ public class TestCase {
 	private static void transfer(String strCommand) {
 		queue.clear();
 		queue.add(strCommand);
+		Report.transferStartTimer = Calendar.getInstance();
 	}
 
 	/**
