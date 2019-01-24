@@ -17,7 +17,6 @@ public class TestCase {
 	private static String nonSendCommand = "";
 	static LinkedBlockingQueue<String> queue = new LinkedBlockingQueue();
 
-
 	public static String takeCommand() {
 		try {
 			return queue.take();
@@ -36,6 +35,8 @@ public class TestCase {
 		queue.add("4");
 	}
 
+	static boolean isFirst = true;
+
 	/**
 	 * 送command
 	 */
@@ -51,12 +52,16 @@ public class TestCase {
 //				"" + System.currentTimeMillis()).replace("job5678", //
 //						"" + System.currentTimeMillis());
 
-		if (isSameAccount(command, preCommand)) {
+		if (isFirst) {
+			isFirst = false;
+			transfer(command);
+			preCommand = command;
+		} else if (isSameAccount(command, preCommand)) {
 			transfer(command);
 			preCommand = command;
 		} else {
 			logout();
-			nonSendCommand = command;	
+			nonSendCommand = command;
 		}
 	}
 
@@ -71,6 +76,7 @@ public class TestCase {
 
 	/**
 	 * 檢查帳號是否相同
+	 * 
 	 * @param transferInfo
 	 * @param preTransferInfo
 	 * @return
@@ -80,7 +86,8 @@ public class TestCase {
 			return false;
 
 		String accountCmd = transferInfo.split(" ")[1] + transferInfo.split(" ")[2] + transferInfo.split(" ")[3];
-		String preAccountCmd = preTransferInfo.split(" ")[1] + preTransferInfo.split(" ")[2] + preTransferInfo.split(" ")[3];
+		String preAccountCmd = preTransferInfo.split(" ")[1] + preTransferInfo.split(" ")[2]
+				+ preTransferInfo.split(" ")[3];
 		//
 		return accountCmd.equals(preAccountCmd);
 	}
