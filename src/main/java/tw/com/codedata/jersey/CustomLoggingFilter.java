@@ -76,8 +76,15 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		System.out.println("轉帳成功率: " + success + " / " + total + " = " + rate + "%");
 	}
 
+	boolean isInitSuccess = false;
 	private boolean isLogoutFinish(String strJson) {
-
+		
+		if(!isInitSuccess)
+		{
+			isInitSuccess = true;
+			return false;
+		}
+		
 		Gson g = new GsonBuilder().create();
 		RsSyncStatus rsSyncStatus = g.fromJson(strJson, RsSyncStatus.class);
 

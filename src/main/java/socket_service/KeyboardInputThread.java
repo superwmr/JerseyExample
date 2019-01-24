@@ -126,6 +126,7 @@ public class KeyboardInputThread extends Thread {
 					System.out.println("LOGOUT_VALUE");
 					cmdInstance.setType(Type.LOGOUT);
 					LogoutData.Builder logoutBuilder = LogoutData.newBuilder();
+					logoutBuilder.setBank(Bank.newBuilder());
 					cmdInstance.setLogoutData(logoutBuilder);
 				} else {
 					continue;
