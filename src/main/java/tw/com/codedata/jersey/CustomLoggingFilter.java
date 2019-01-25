@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Handler;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -50,8 +51,13 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 
 		if (Config.isRunTestCase) {
 			if (path.toLowerCase().indexOf("sync_status") != -1) {
-				if (isLogoutFinish(body))
-					TestCase.putNextCommand();
+				Gson g = new GsonBuilder().create();
+				RsSyncStatus rsSyncStatus = g.fromJson(body, RsSyncStatus.class);
+				if (isLogoutFinish(rsSyncStatus))
+					
+					TestCase.putIdelCommand();
+				if (isReady(rsSyncStatus))
+					TestCase.putNextCommand(rsSyncStatus);
 			} else if (path.toLowerCase().indexOf("transfer_records") != -1) {
 				calSuccessRate(body);
 			}
@@ -67,7 +73,7 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 
 		total++;
 
-		if (rsTransferRecords.getError_code().equals("00")) {
+		if (rsTransferRecords.getError_code().equals("00") && !rsTransferRecords.getTransfer_code().equals("")) {
 			success++;
 		}
 
@@ -77,13 +83,14 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 	}
 
 
-	private boolean isLogoutFinish(String strJson) {
-
-		
-		Gson g = new GsonBuilder().create();
-		RsSyncStatus rsSyncStatus = g.fromJson(strJson, RsSyncStatus.class);
+	private boolean isLogoutFinish(RsSyncStatus rsSyncStatus) {
 
 		return rsSyncStatus.getStatus_type().equals("0");
+	}
+	
+private boolean isReady(RsSyncStatus rsSyncStatus) {
+
+		return rsSyncStatus.getStatus_type().equals("3");
 	}
 
 	private String getPathParameters(ContainerRequestContext requestContext) {
