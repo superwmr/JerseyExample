@@ -77,7 +77,7 @@ public class DataStreamThread implements IKeyboardInput {
 					
 					if(Config.isRunTestCase && cmd.getType() == Command.Type.REGISTER)
 					{
-//						TestCase.putNextCommand();
+						//TestCase.putNextCommand();
 					}
 
 				}
