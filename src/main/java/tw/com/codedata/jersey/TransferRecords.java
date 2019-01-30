@@ -17,7 +17,7 @@ public class TransferRecords {
 	public Response getResponse() {
 
 		if (Config.isRunTestCase) {
-			sendCommand.start();
+			//sendCommand.start();
 			Report.transferCount++;
 			Report.transferEndTimer = Calendar.getInstance();
 			//
@@ -34,12 +34,12 @@ public class TransferRecords {
 	Thread sendCommand = new Thread(new Runnable() {
 		public void run() {
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(30000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			TestCase.putNextCommand();
+			//TestCase.putNextCommand();
 		}
 	});
 }

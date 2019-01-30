@@ -9,7 +9,7 @@ public class TestCase {
 	/**
 	 * 前一個己執行的command
 	 */
-	private static String preCommand = "";
+	//private static String preCommand = "";
 
 	/**
 	 * 前一個應執行，但未執行的command
@@ -40,7 +40,7 @@ public class TestCase {
 	/**
 	 * 送command
 	 */
-	public static void putNextCommand() {
+	public static void putIdelCommand() {
 		String command = "";
 		if (nonSendCommand.isEmpty())
 			command = CommandList.getCommands();
@@ -48,17 +48,24 @@ public class TestCase {
 			command = new String(nonSendCommand);
 			nonSendCommand = "";
 		}
+		
+		transfer(command);
+		return;
+	}
+	
+	/**
+	 * 送command
+	 */
+	public static void putNextCommand(RsSyncStatus rsSyncStatus) {
+		String command = "";
+		command = CommandList.getCommands();
 //		strCommand = strCommand.replace("order1234", //
 //				"" + System.currentTimeMillis()).replace("job5678", //
 //						"" + System.currentTimeMillis());
-
-		if (isFirst) {
-			isFirst = false;
+		
+		if (isSameAccount(command, rsSyncStatus.getBank(), rsSyncStatus.getAccount())) {
 			transfer(command);
-			preCommand = command;
-		} else if (isSameAccount(command, preCommand)) {
-			transfer(command);
-			preCommand = command;
+		
 		} else {
 			logout();
 			nonSendCommand = command;
@@ -81,14 +88,13 @@ public class TestCase {
 	 * @param preTransferInfo
 	 * @return
 	 */
-	private static boolean isSameAccount(String transferInfo, String preTransferInfo) {
-		if (preTransferInfo.isEmpty())
+	private static boolean isSameAccount(String transferInfo, String bankCode, String account) {
+		if (account.equals("") || bankCode.equals(""))
 			return false;
 
-		String accountCmd = transferInfo.split(" ")[1] + transferInfo.split(" ")[2] + transferInfo.split(" ")[3];
-		String preAccountCmd = preTransferInfo.split(" ")[1] + preTransferInfo.split(" ")[2]
-				+ preTransferInfo.split(" ")[3];
+		String accountCmd = transferInfo.split(" ")[2];
+		String bankCmd = transferInfo.split(" ")[1];
 		//
-		return accountCmd.equals(preAccountCmd);
+		return accountCmd.equals(account) && bankCmd.equals(bankCode);
 	}
 }
