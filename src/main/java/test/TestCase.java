@@ -40,11 +40,14 @@ public class TestCase {
 	/**
 	 * 送command
 	 */
-	public static void putIdelCommand() {
+	public static void putIdelCommand(int orderId, int jobId) {
 		String command = "";
-		if (nonSendCommand.isEmpty())
+		if (nonSendCommand.isEmpty()) {
 			command = CommandList.getCommands();
-		else {
+			command = command.replace("order1234", //
+					"" + orderId).replace("job5678", //
+							"" + jobId);
+		} else {
 			command = new String(nonSendCommand);
 			nonSendCommand = "";
 		}
@@ -56,12 +59,12 @@ public class TestCase {
 	/**
 	 * 送command
 	 */
-	public static void putNextCommand(RsSyncStatus rsSyncStatus) {
+	public static void putNextCommand(RsSyncStatus rsSyncStatus, int orderId, int jobId) {
 		String command = "";
 		command = CommandList.getCommands();
-//		strCommand = strCommand.replace("order1234", //
-//				"" + System.currentTimeMillis()).replace("job5678", //
-//						"" + System.currentTimeMillis());
+		command = command.replace("order1234", //
+				"" + orderId).replace("job5678", //
+						"" + jobId);
 		
 		if (isSameAccount(command, rsSyncStatus.getBank(), rsSyncStatus.getAccount())) {
 			transfer(command);

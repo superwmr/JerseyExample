@@ -34,6 +34,9 @@ import test.TestCase;
  * Servlet Filter implementation class CustomLoggingFilter
  */
 public class CustomLoggingFilter extends LoggingFilter implements ContainerRequestFilter, ContainerResponseFilter {
+	
+	private static int orderId = 0;
+	private static int jobId = 0;
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 		StringBuilder sb = new StringBuilder();
@@ -54,10 +57,11 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 				Gson g = new GsonBuilder().create();
 				RsSyncStatus rsSyncStatus = g.fromJson(body, RsSyncStatus.class);
 				if (isLogoutFinish(rsSyncStatus))
-					
-					TestCase.putIdelCommand();
-				if (isReady(rsSyncStatus))
-					TestCase.putNextCommand(rsSyncStatus);
+					TestCase.putIdelCommand(orderId, jobId);
+				else if (isReady(rsSyncStatus))
+					TestCase.putNextCommand(rsSyncStatus, orderId, jobId);
+				jobId++;
+				orderId++;
 			} else if (path.toLowerCase().indexOf("transfer_records") != -1) {
 				calSuccessRate(body);
 			}
@@ -70,16 +74,17 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 	private void calSuccessRate(String body) {
 		Gson g = new GsonBuilder().create();
 		RsTransferRecords rsTransferRecords = g.fromJson(body, RsTransferRecords.class);
-
-		total++;
+		if (!rsTransferRecords.getError_code().equals("03"))
+				total++;
 
 		if (rsTransferRecords.getError_code().equals("200") && !rsTransferRecords.getTransfer_code().equals("")) {
 			success++;
 		}
 
-		System.out.println("第" + total + "次轉帳。");
+		System.out.println("第" + total + "次轉帳。 (job id = " + rsTransferRecords.getJob_id()+ ")");
 		String rate = new DecimalFormat("0.00").format((((float) success / (float) total) * 100));
 		System.out.println("轉帳成功率: " + success + " / " + total + " = " + rate + "%");
+		System.out.println("************************************************************************** " + "End of Job - " + rsTransferRecords.getJob_id() + " **********************************************************************************");
 	}
 
 
