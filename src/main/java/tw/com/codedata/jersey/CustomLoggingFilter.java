@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +27,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import test.Config;
+import test.Report;
 import test.RsSyncStatus;
 import test.RsTransferRecords;
 import test.TestCase;
@@ -87,6 +89,13 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		System.out.println("第" + total + "次轉帳。 (job id = " + rsTransferRecords.getJob_id()+ ")");
 		String rate = new DecimalFormat("0.00").format((((float) success / (float) total) * 100));
 		System.out.println("轉帳成功率: " + success + " / " + total + " = " + rate + "%");
+		Report.transferCount++;
+		Report.transferEndTimer = Calendar.getInstance();
+		//
+		long rsTime = Report.transferEndTimer.getTimeInMillis() - Report.transferStartTimer.getTimeInMillis();
+		Report.totalTimer += rsTime;
+		System.out.println("本次完成時間 = " + rsTime / 1000 + "秒");
+		System.out.println("平均完成時間 = " + Report.totalTimer / Report.transferCount / 1000 + "秒");
 		System.out.println("************************************************************************** " + "End of Job - " + rsTransferRecords.getJob_id() + " **********************************************************************************");
 	}
 
