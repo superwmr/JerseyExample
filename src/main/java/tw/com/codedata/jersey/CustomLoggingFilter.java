@@ -74,8 +74,11 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 	private void calSuccessRate(String body) {
 		Gson g = new GsonBuilder().create();
 		RsTransferRecords rsTransferRecords = g.fromJson(body, RsTransferRecords.class);
-		if (!rsTransferRecords.getError_code().equals("03"))
-				total++;
+		if (rsTransferRecords.getError_code().equals("03")) {
+			System.out.println("************************************************************************** " + "End of Job - " + rsTransferRecords.getJob_id() + " **********************************************************************************");
+				return;
+		}
+		total++;
 
 		if (rsTransferRecords.getError_code().equals("200") && !rsTransferRecords.getTransfer_code().equals("")) {
 			success++;
