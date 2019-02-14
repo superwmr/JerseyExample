@@ -144,6 +144,7 @@ public class KeyboardInputThread extends Thread {
 				inputData.onInput(cmdBuildArray);
 
 				System.out.println("cmdInstance = " + cmdBuild.toString());
+				System.out.println("************************************************************************** " + "Beginning of Job - " + jobID + " **************************************************************************");
 
 				if (isInterrupted())
 					break;
