@@ -82,7 +82,7 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 		}
 		total++;
 
-		if (rsTransferRecords.getError_code().equals("200") && !rsTransferRecords.getTransfer_code().equals("")) {
+		if (rsTransferRecords.getStatus().equals("0") && rsTransferRecords.getError_code().equals("") && !rsTransferRecords.getTransfer_code().equals("")) {
 			success++;
 		}
 

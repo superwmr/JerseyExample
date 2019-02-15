@@ -30,6 +30,8 @@ public class RsTransferRecords {
 	private String transfer_account;
 
 	private String job_id;
+	
+	private String status;
 
 	public String getAccount_id() {
 		return account_id;
@@ -149,6 +151,10 @@ public class RsTransferRecords {
 
 	public void setJob_id(String job_id) {
 		this.job_id = job_id;
+	}
+	
+	public String getStatus() {
+		return status;
 	}
 
 	@Override

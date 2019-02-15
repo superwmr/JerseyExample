@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
@@ -13,7 +14,7 @@ import test.TestCase;
 
 @Path("/transfer_records")
 public class TransferRecords {
-	@POST
+	@PUT
 	public Response getResponse() {
 
 		if (Config.isRunTestCase) {
