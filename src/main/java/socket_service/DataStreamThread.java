@@ -77,7 +77,12 @@ public class DataStreamThread implements IKeyboardInput {
 					
 					if(Config.isRunTestCase && cmd.getType() == Command.Type.REGISTER)
 					{
-						//TestCase.putNextCommand();
+						//System.out.println("cmd = " + cmd.getSyncBalanceData().);
+					}
+					
+					if(Config.isRunTestCase && cmd.getType() == Command.Type.SYNC_BALANCE)
+					{
+						System.out.println("************************************************************************** " + "End of Job - " + cmd.getSyncBalanceData().getJobId() + " **********************************************************************************");
 					}
 
 				}

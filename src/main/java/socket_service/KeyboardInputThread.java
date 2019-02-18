@@ -116,11 +116,16 @@ public class KeyboardInputThread extends Thread {
 					SyncBalanceData.Builder syncBalanceData = SyncBalanceData.newBuilder();
 					Bank.Builder bank = Bank.newBuilder();
 					bank.setCode(bankCode);
+					bank.setName(name);
+					bank.setPhone(phone);
 					bank.setAccount(account);
 					bank.setPassword(password);
 					bank.setTransPwd(tranPwd);
+					bank.setIdCard(idCard);
 					//
 					syncBalanceData.setBank(bank);
+					syncBalanceData.setJobId(jobID);
+					syncBalanceData.setOrderId(orderID);
 					cmdInstance.setSyncBalanceData(syncBalanceData);
 				} else if (cmd.equals("" + Type.LOGOUT_VALUE)) {// 4
 					System.out.println("LOGOUT_VALUE");
