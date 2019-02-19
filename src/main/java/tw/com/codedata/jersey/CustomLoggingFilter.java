@@ -66,6 +66,7 @@ public class CustomLoggingFilter extends LoggingFilter implements ContainerReque
 				orderId++;
 			} else if (path.toLowerCase().indexOf("transfer_records") != -1) {
 				calSuccessRate(body);
+				TestCase.setCommand("");
 			}
 		}
 	}

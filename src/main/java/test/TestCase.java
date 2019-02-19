@@ -15,6 +15,7 @@ public class TestCase {
 	 * 前一個應執行，但未執行的command
 	 */
 	private static String nonSendCommand = "";
+	private static String command = "";
 	static LinkedBlockingQueue<String> queue = new LinkedBlockingQueue();
 
 	public static String takeCommand() {
@@ -41,7 +42,6 @@ public class TestCase {
 	 * 送command
 	 */
 	public static void putIdelCommand(int orderId, int jobId) {
-		String command = "";
 		if (nonSendCommand.isEmpty()) {
 			command = CommandList.getCommands();
 			command = command.replace("order1234", //
@@ -60,8 +60,8 @@ public class TestCase {
 	 * 送command
 	 */
 	public static void putNextCommand(RsSyncStatus rsSyncStatus, int orderId, int jobId) {
-		String command = "";
-		command = CommandList.getCommands();
+		if(command.equals(""))
+			command = CommandList.getCommands();
 		command = command.replace("order1234", //
 				"" + orderId).replace("job5678", //
 						"" + jobId);
@@ -99,5 +99,13 @@ public class TestCase {
 		String bankCmd = transferInfo.split(" ")[1];
 		//
 		return accountCmd.equals(account) && bankCmd.equals(bankCode);
+	}
+	
+	public static void setCommand(String cmd) {
+		command = cmd;
+	}
+	
+	public static String getCommand() {
+		return command;
 	}
 }

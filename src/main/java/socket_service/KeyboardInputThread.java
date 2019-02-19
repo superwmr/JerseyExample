@@ -136,7 +136,7 @@ public class KeyboardInputThread extends Thread {
 				} else {
 					continue;
 				}
-
+				System.out.println("************************************************************************** " + "Beginning of Job - " + jobID + " **************************************************************************");
 				Command cmdBuild = cmdInstance.build();
 				byte[] cmdBuildArray = cmdBuild.toByteArray();
 				int cmdLen = cmdBuildArray.length;
@@ -149,7 +149,6 @@ public class KeyboardInputThread extends Thread {
 				inputData.onInput(cmdBuildArray);
 
 				System.out.println("cmdInstance = " + cmdBuild.toString());
-				System.out.println("************************************************************************** " + "Beginning of Job - " + jobID + " **************************************************************************");
 
 				if (isInterrupted())
 					break;

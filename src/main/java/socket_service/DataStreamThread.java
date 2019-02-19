@@ -6,6 +6,7 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.nio.ByteBuffer;
+import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.swing.RowFilter.ComparisonType;
@@ -14,6 +15,7 @@ import test.Config;
 import test.TestCase;
 import transfer_protobuf.Commands;
 import transfer_protobuf.Commands.Command;
+import test.TestCase;
 
 public class DataStreamThread implements IKeyboardInput {
 
@@ -83,6 +85,10 @@ public class DataStreamThread implements IKeyboardInput {
 					if(Config.isRunTestCase && cmd.getType() == Command.Type.SYNC_BALANCE)
 					{
 						System.out.println("************************************************************************** " + "End of Job - " + cmd.getSyncBalanceData().getJobId() + " **********************************************************************************");
+						if(cmd.getSyncBalanceData().getErrorCode().equals("")) {
+							TestCase.setCommand(TestCase.getCommand().replaceFirst("3", "2"));
+						}
+					
 					}
 
 				}
