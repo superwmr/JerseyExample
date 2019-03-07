@@ -5,7 +5,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-@Path("/devices/1234567890/sync_status")
+@Path("/devices/f6d0c2493b51d43aa07f5233ad2541af/sync_status")
 public class SyncStatus
 {
     @PUT  

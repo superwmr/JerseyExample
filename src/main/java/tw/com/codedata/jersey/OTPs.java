@@ -22,6 +22,20 @@ public class OTPs {
 
 //    	http://35.194.242.29/api/v1.0/otp?p=%2B8618114899095&b=中信银行
 //		System.out.println("p = " + p + ", b = " + b);
+		if(b.equals("102"))
+			b = "工商银行";
+		else if(b.equals("302"))
+			b = "中信银行";
+		else if(b.equals("304"))
+			b = "华夏银行";
+		else if(b.equals("307"))
+			b = "平安银行";
+		else if(b.equals("309"))
+			b = "兴业银行";
+		else if(b.equals("310"))
+			b = "浦发银行";
+		else if(b.equals("105"))
+			b = "建设银行";
 
 		String sms = callAPIs(p, b, t);
 //		System.out.println("sms = " + sms);
